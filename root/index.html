@@ -1,0 +1,19 @@
+<!doctype html>
+<html ng-app='redditApp'>
+<head>
+  <title>Reddit Angular</title>
+  <script src="vendor/angular/angular.min.js"></script>
+  <script src="app.js"></script>
+</head>
+<body ng-controller="MainCtrl">
+
+  <input type="text" ng-model="term" />
+  <p>{{term}}</p>
+  <div ng-repeat="poke in pokemon">
+    <p><strong>{{poke.name}}</strong></p>
+    <p>Index: {{poke.ndex}}</p>
+    <p>Type: {{poke.type}}</p>
+  </div>
+
+</body>
+</html>
