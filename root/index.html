@@ -1,18 +1,70 @@
 <!doctype html>
-<html ng-app='redditApp'>
+<html ng-app='presenceApp'>
 <head>
-  <title>Reddit Angular</title>
+  <title>Presence | Dashboard</title>
   <script src="vendor/angular/angular.min.js"></script>
-  <script src="app.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/resources.js"></script>
+  <link rel="stylesheet" href="/css/normalize.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="/css/style.css" media="screen" title="no title" charset="utf-8">
 </head>
+
 <body ng-controller="MainCtrl">
 
-  <input type="text" ng-model="term" />
-  <p>{{term}}</p>
-  <div ng-repeat="poke in pokemon">
-    <p><strong>{{poke.name}}</strong></p>
-    <p>Index: {{poke.ndex}}</p>
-    <p>Type: {{poke.type}}</p>
+  <div class="container">
+    <div class="sidebar">
+      <!-- Header -->
+      <h1>Presence</h1>
+      <h2>Dashboard</h3>
+
+      <div class="sidebar-main">
+        <!-- Summon button -->
+        <div class="action-button" ng-click="summon()">SUMMON</div>
+
+        <div class="sidebar-lists">
+          <!-- In list  -->
+          <div class="sidebar-list">
+            <h4>In</h4>
+            <div ng-repeat="user in usersIn">
+              <li>{{user.name}}</li>
+            </div>
+          </div>
+          <!-- Out list -->
+          <div class="sidebar-list">
+            <h4>Out</h4>
+            <div ng-repeat="user in usersOut">
+              <li>{{user.name}}</li>
+            </div>
+          </div>
+        </div>
+
+        <!-- Settings -->
+      </div>
+    </div>
+
+    <div class="main">
+      <!-- Search bar -->
+      <div class="search-bar">
+        <input class="search-field" type="text" ng-model="searchBar.text" ng-change="onSearchQueryChange()" placeholder="Search user" />
+        <div class="search-button" ng-click="performSearch()">
+          <img src="img/search-icon.svg" alt="Search icon" />
+        </div>
+      </div>
+
+      <p class="query-string">{{users.length}} users online.</p>
+
+      <!-- Results -->
+      <div class="cards-wrapper">
+        <div class="card" ng-repeat="user in users">
+          <div class="profile-picture">
+          </div>
+          <div class="user-details">
+            <h1>{{user.name}}</h1>
+            <p>Status: {{user.status}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
 </body>
