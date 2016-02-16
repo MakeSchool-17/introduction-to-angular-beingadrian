@@ -1,0 +1,8 @@
+<!-- Result card template -->
+<div class="result-card" ng-repeat="user in data">
+  <img class="profile-picture" ng-src={{user.photoUrl}} alt="" />
+  <div class="user-details">
+    <h1>{{user.name}}</h1>
+    <p>Status: {{user.status}}</p>
+  </div>
+</div>
