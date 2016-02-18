@@ -2,9 +2,16 @@
 <html ng-app='presenceApp'>
 <head>
   <title>Presence | Dashboard</title>
+  <!-- Angular -->
   <script src="vendor/angular/angular.min.js"></script>
+  <!-- Firebase -->
+  <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+  <!-- AngularFire -->
+  <script src="https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js"></script>
+  <!-- Angular vendors -->
   <script src="vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
   <script src="vendor/angular-resource/angular-resource.min.js"></script>
+  <!-- Angular files -->
   <script src="js/app.js"></script>
   <script src="js/resources.js"></script>
   <script src="js/directives.js"></script>
@@ -17,20 +24,41 @@
 
   <div class="container">
     <div class="sidebar">
-      <!-- Header -->
-      <h1>Presence</h1>
-      <h2>Dashboard</h3>
+      <img class="sidebar-image" src="img/makeschool-logo.svg" alt="Make School logo" />
+      <!-- Head title -->
+      <h1 class="white center-text">Presence</h1>
+      <h2 class="white center-text">Dashboard</h3>
+      <p class="white center-text">v.0.1 Beta</p>
 
       <div class="sidebar-main">
         <!-- Summon button -->
         <action-button title="SUMMON" ng-click="summon()"></action-button>
 
+        <!-- Sidebar listss -->
         <div class="sidebar-lists">
-          <sidebar-list title="In" data="usersOut"></sidebar-list>
-          <sidebar-list title="Out" data="usersOut"></sidebar-list>
+          <div class="sidebar-list">
+            <h4 class="white">
+              In <span class="counter" ng-model="usersIn">({{usersIn.length}})</span>
+            </h4>
+            <div ng-repeat="user in usersIn | limitTo: 5">
+              <li class="white">{{user.name}}</li>
+            </div>
+            <p class="white" ng-show="usersIn.length > 5">...</p>
+          </div>
+          <div class="sidebar-list">
+            <h4 class="white">
+              Out <span class="counter" ng-model="usersOut">({{usersOut.length}})</span>
+            </h4>
+            <div ng-repeat="user in usersOut | limitTo: 5">
+              <li class="white">{{user.name}}</li>
+            </div>
+            <p class="white" ng-show="usersOut.length > 5">...</p>
+          </div>
         </div>
-
-        <!-- Settings -->
+      </div>
+      <!-- Log in / Log out -->
+      <div class="login-button" ng-click="loginLogout()">
+        <p>LOG OUT</p>
       </div>
     </div>
 
@@ -43,11 +71,13 @@
         </div>
       </div>
 
-      <p class="results-string" ng-model="resultsString">{{resultsString}}</p>
+      <p class="results-string" ng-model="results">
+        <ng-pluralize count="results.length" when="{'0': 'No results.', '1': '1 result.', 'other': '{} results.'}"></ng-pluralize>
+      </p>
 
       <!-- Results -->
       <div class="cards-wrapper">
-        <result-cards data="users"></result-cards>
+        <result-cards class="cards" data="results"></result-cards>
       </div>
     </div>
   </div>

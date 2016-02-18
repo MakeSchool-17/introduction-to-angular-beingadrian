@@ -1,5 +1,7 @@
 <!-- Result card template -->
 <div class="result-card" ng-repeat="user in data">
+  <div class="indicator-red" ng-show="user.status == 'out'"></div>
+  <div class="indicator-green" ng-show="user.status == 'in'"></div>
   <img class="profile-picture" ng-src={{user.photoUrl}} alt="" />
   <div class="user-details">
     <h1>{{user.name}}</h1>

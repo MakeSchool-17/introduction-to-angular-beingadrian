@@ -9,6 +9,18 @@ body {
   background-color: rgb(249, 247, 247);
 }
 
+/* colors */
+
+.white {
+  color: rgb(255, 255, 255);
+}
+
+/* alignments */
+
+.center-text {
+  text-align: center;
+}
+
 /* container */
 
 .container {
@@ -19,65 +31,89 @@ body {
 
 .sidebar {
   flex-flow: column;
-  background-color: rgba(40, 141, 193, 1);
+  background-color: rgba(38, 38, 38, 1);
   width: 240px;
   min-height: 100vh;
   padding-left: 30px;
-  padding-top: 30px;
+  padding-right: 30px;
+  padding-top: 50px;
   position: fixed;
+}
+
+.sidebar-image {
+  display: block;
+  width: 180px;
+  height: auto;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 .sidebar h1 {
   margin: 0;
-  color: white;
   font-weight: 200;
   font-size: 2.3em;
   letter-spacing: 1px;
 }
 
 .sidebar h2 {
-  margin: 0;
-  color: white;
+  margin: 3px 0 0 0;
   font-weight: 600;
   font-size: 1.2em;
   letter-spacing: 1px;
 }
 
+.sidebar p {
+  margin-top: 7px;
+  font-weight: 100;
+}
+
 .sidebar-main {
-  margin-top: 100px;
+  margin-top: 30px;
 }
 
 .sidebar-lists {
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 .sidebar-list {
-  margin-top: 40px;
+  margin-top: 30px;
 }
 
 .sidebar-list h4 {
   margin-bottom: 10px;
-  color: white;
   font-size: 1.4em;
+}
+
+.counter {
+  font-weight: 100;
+  font-size: 0.7em;
 }
 
 .sidebar-list li {
   margin-top: 3px;
-  color: white;
   list-style: none;
   font-weight: 200;
+}
+
+.sidebar-list p {
+  margin: 0;
+  padding: 0;
+  line-height: 11px;
+  font-size: 1.4em;
 }
 
 /* action button */
 
 .action-button {
   display: flex;
+  margin: auto;
   justify-content: center; /* align horizontal */
   align-items: center; /* align vertical */
-  width: 200px;
-  height: 50px;
+  width: 240px;
+  height: 44px;
   background-color: white;
-  color: #1a6c95;
+  color: rgba(38, 38, 38, 1);
   border-radius: 5px;
 }
 
@@ -86,15 +122,35 @@ body {
   cursor: pointer;
 }
 
+/* bottom sidebar */
+
+.login-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  width: 300px;
+  height: 44px;
+  left: 0;
+  bottom: 0;
+  color: rgb(255, 255, 255);
+  font-size: 0.9em;
+  text-align: center;
+  font-weight: 200;
+  letter-spacing: 1.5px;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.login-button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
 /* main */
 
 .main {
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-left: 270px;
+  margin-left: 300px;
   padding-top: 50px;
-  height: 100%;
 }
 
 .search-bar {
@@ -152,28 +208,46 @@ body {
 }
 
 .cards-wrapper {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.cards {
+  display: flex;
+  flex-flow: row wrap;
   align-items: center;
-  margin-top: 5px;
-  margin-bottom: 50px;
-  width: 100%;
+  justify-content: flex-start;
+  margin: 5px 0 50px 0;
+  width: 990px;
 }
 
 .result-card {
-  display: flex;
+  display: inline-flex;
+  flex-direction: column;
+  position: relative;
   align-items: center;
-  margin: auto;
-  margin-top: 30px;
-  padding: 2px 20px;
-  width: 80%;
-  height: 100px;
-  text-align: left;
+  justify-content: center;
+  margin: 15px 15px;
+  width: 300px;
+  height: 300px;
+  text-align: center;
   background-color: rgb(255, 255, 255);
   border-radius: 3px;
   box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.13);
 }
 
+.user-details {
+  flex-direction: column | row;
+}
+
 .result-card h1 {
-  margin: 0;
+  margin: 20px 0 0 0;
+  padding: 0;
+  justify-content:flex-start;
+
   color: rgb(37, 37, 37);
   font-size: 1.4em;
   font-weight: 300;
@@ -185,15 +259,55 @@ body {
   font-size: 0.9em;
 }
 
+.indicator-green {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: rgb(63, 204, 77);
+}
+
+.indicator-red {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: rgb(232, 57, 57);
+}
+
 .profile-picture {
-  flex-direction: column;
-  background-color: rgb(214, 214, 214);
-  width: 80px;
-  height: 80px;
+  background-color: rgb(246, 246, 246);
+  width: 50%;
+  height: 50%;
   border-radius: 50%;
 }
 
-.user-details {
-  flex-direction: column | row;
-  margin-left: 20px;
+/* Breakpoints */
+
+@media (min-width: 1680px) {
+
+  .cards {
+    width: 1320px;
+  }
+
+}
+
+@media (min-width: 960px) and (max-width: 1290px) {
+
+  .cards {
+    width: 660px;
+  }
+
+}
+
+@media (min-width: 640px) and (max-width: 960px) {
+
+  .cards {
+    width: 330px;
+  }
+
 }
